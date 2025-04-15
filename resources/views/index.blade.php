@@ -242,7 +242,7 @@
                                                             src="{{ asset('storage/' . ($images[0] ?? 'default-image.jpg')) }}" 
                                                             onerror="this.onerror=null;this.src='{{ asset('images/default-image.jpg') }}';"
                                                             alt="{{ $app->app_name }}" 
-                                                            class="w-full h-48 object-cover rounded-md mb-4">
+                                                            class="min-w-[341px] h-48 object-cover rounded-[30px] mb-4">
                                                     <a href="{{route('app.view', $app->id)}}">
                                                 </div>
                                             </div>
@@ -304,6 +304,48 @@
                         </div>
                     @endforeach
                 </section>
+
+
+                {{-- CODE WRITTEN BY HUNNY --}}
+                
+                {{-- <section class="mb-8">
+                        <div class=" flex overflow-hidden shadow-md gap-5 px-5">
+                            <!-- Card 1 -->
+                            <div class="card-section rounded-[30px] mb-6">
+                                <div class="swiper-wrapper">
+                                          
+                                    <div class="swiper-slide">
+                                        <img 
+                                            src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S1_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67"
+                                            class="min-w-[341px] h-48 object-cover rounded-[30px] mb-4">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <!-- Card 2 -->
+                            <div class="card-section mb-6 rounded-[30px]">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img 
+                                            src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S1_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67"
+                                            class="h-48 object-cover min-w-[341px] rounded-[30px] mb-4">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <!-- Card 3 -->
+                            <div class="card-section mb-6 rounded-[30px]">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                                    <img 
+                                                    src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S1_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67_2560x1440-5d74d9b240bba8f2c40920dcde7c5c67"
+                                                        class=" h-48 object-cover min-w-[341px]  rounded-[30px]  mb-4">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section> --}}
                 
                   
 
