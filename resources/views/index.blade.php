@@ -243,7 +243,7 @@
                                                             onerror="this.onerror=null;this.src='{{ asset('images/default-image.jpg') }}';"
                                                             alt="{{ $app->app_name }}" 
                                                             class="min-w-[341px] h-48 object-cover rounded-[30px] mb-4">
-                                                    <a href="{{route('app.view', $app->id)}}">
+                                                    <a href="{{route('app.view', $app->id)}}"> 
                                                 </div>
                                             </div>
                                         </a>
