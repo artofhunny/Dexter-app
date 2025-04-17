@@ -42,6 +42,14 @@ Route::get('/listing' ,function(){
     return view('appUpload.app-listing');
 });
 
+Route::get('/listing-renewal', function () {
+    return view('appUpload.listing-app-renewal');
+});
+
+Route::get('/launchpad', function () {
+    return view('appUpload.appUpload');
+})->name('launchpad');
+
 
 
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
@@ -116,12 +124,16 @@ Route::middleware(['adminCheck'])->group(function () {
 
 
         // Launchpad
-    Route::get('/launchpad', function () {
-            return view('appUpload.appUpload');
-        })->name('launchpad');
+    // Route::get('/launchpad', function () {
+    //         return view('appUpload.appUpload');
+    //     })->name('launchpad');
+
+       
     
         // Launchpad application can be listed from here
     Route::post('/launchpad', [LaunchpadController::class, 'launch'])->name('launchpad');
+
+
         
 });
 

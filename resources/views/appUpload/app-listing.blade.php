@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check" />
+
 
     <script defer>
         tailwind.config = {
@@ -107,6 +109,15 @@
             /* Make the text black */
             font-size: 16px;
             /* Optional: make it a bit bigger and cleaner */
+        }
+        /* .inpp{
+            display: none;
+        } */
+        .chk span{
+            display: none;
+        }
+        .paid-plan-container{
+            display: flex;
         }
     </style>
 
@@ -360,27 +371,27 @@
 
                             </div>
 
-                            {{-- <!-- Row 4 -->
-                <div class="app_listing-field">
-                    <label class="app_listing-label" for="app_listing-about">About Your App</label>
-                    <textarea class="app_listing-input" name="about_intro" id="app_listing-about" placeholder="Enter About your app"></textarea>
-                  
-                </div>
+                            <!-- Row 4 -->
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-about">About Your App</label>
+                                <textarea class="app_listing-input" name="about_intro" id="app_listing-about" placeholder="Enter About your app"></textarea>
+                            
+                            </div>
+                            
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-introduction">Introduction</label>
+                                <textarea class="app_listing-input" id="app_listing-introduction" placeholder="Enter your phone number"></textarea>
+                            </div>
+                            
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-overview">Overview</label>
+                                <textarea class="app_listing-input" id="app_listing-overview" placeholder="Enter your phone number"></textarea>
+                            </div>
                 
-                <div class="app_listing-field">
-                    <label class="app_listing-label" for="app_listing-introduction">Introduction</label>
-                    <textarea class="app_listing-input" id="app_listing-introduction" placeholder="Enter your phone number"></textarea>
-                </div>
-                
-                <div class="app_listing-field">
-                    <label class="app_listing-label" for="app_listing-overview">Overview</label>
-                    <textarea class="app_listing-input" id="app_listing-overview" placeholder="Enter your phone number"></textarea>
-                </div>
-                 --}}
 
 
                             <!-- Tabs -->
-                            <div class="app_listing-field">
+                            {{-- <div class="app_listing-field">
                                 <label class="app_listing-label">App Details</label>
 
                                 <div class="tabs">
@@ -406,24 +417,30 @@
                                 <input type="hidden" name="about_intro" id="about_intro">
                                 <input type="hidden" name="introduction" id="introduction_input">
                                 <input type="hidden" name="overview" id="overview_input">
+                            </div> --}}
+
+
+
+
+                                        {{-- <!-- Row 5 -->
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-faqs">FAQs</label>
+                                <textarea class="app_listing-input" id="app_listing-faqs" placeholder="Enter your full name"></textarea>
+                            </div> --}}
+
+                            {{-- FAQ --}}
+
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-faq">FAQ</label>
+                                <textarea class="app_listing-input" id="app_listing-faq" placeholder="Enter the question"></textarea>
                             </div>
 
-
-
-
-                            {{-- <!-- Row 5 -->
-                <div class="app_listing-field">
-                    <label class="app_listing-label" for="app_listing-faqs">FAQs</label>
-                    <textarea class="app_listing-input" id="app_listing-faqs" placeholder="Enter your full name"></textarea>
-                </div> --}}
-
-                        {{-- FAQ --}}
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="app_listing-label" for="app_listing-faqs">FAQs</label>
                                 <div id="faq-container"></div>
                                 <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="addFAQ()">Add
                                     FAQ</button>
-                            </div>
+                            </div> --}}
 
 
                             <div class="app_listing-field">
@@ -562,13 +579,198 @@
                                     placeholder="Enter your email address">
                             </div>
 
-                            <!-- Submit Button -->
-                            <div class="app_listing-submit-wrapper">
-                                <button type="submit" class="app_listing-submit" id="app_listing-submit-btn">Submit
-                                    Your App</button>
+                            
+                        </div>
+
+                        {{-- SEO Section --}}
+                        <h1 class="app_listing_heading mt-5">
+                            SEO Details
+                        </h1>
+                        <div class="bg-[#222C34] flex gap-5 px-4 py-6">
+                            <div class="flex flex-col  w-[50%]">
+                                <label for="app-listing-seo" class="app_listing-label">SEO Title</label>
+                                <input type="text" id="app-listing-seo" placeholder="55 - 60 Words" class="w-full app_listing-input">
+                            </div>
+                            <div class="flex flex-col w-[50%]">
+                                <label for="app-listing-seo" class="app_listing-label" >SEO Description</label>
+                                <input type="text" id="app-listing-seo" placeholder="155 - 160 Words" class="w-full app_listing-input">
+                            </div>
+
+                        </div>
+
+                        {{-- Paid plans Section --}}
+                        <h1 class="app_listing_heading mt-5 paid-plan-heading cursor-pointer">
+                            Paid Plans
+                        </h1>
+
+                        <div class="bg-[#222C34] flex flex-col gap-6 px-4 py-6 paid-plan-container">
+                            <div class="flex flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap justify-between lg:gap-24">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <div class="">
+                                        <p class="">Home Page Hero Banner ($25)</p>
+                                        {{-- <input type="file" class="bg-gray-700 mt-2 w-56 rounded inpp app_listing-input"
+                                        id=""> --}}
+                                        <div class="flex items-center rounded mt-2 overflow-hidden inpp">
+                                            <p class="bg-[#545D77] py-2 px-3">File</p>
+                                            <label for="upload-hero-banner" class="px-3 bg-[#545D7770] py-3 text-xs">Upload home page hero banner</label>
+                                            <input type="file" id="upload-hero-banner" class="hidden">
+                                        </div>
+                                    </div>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk show-inp">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk ">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <div>
+                                        <p class="show-inp">Home Page Featured Listing ($25)</p>
+                                        <input type="text" class="bg-gray-700 mt-2 w-full rounded inpp app_listing-input"
+                                        id="">
+                                    </div>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk show-inp">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <div>
+                                        <p class="show-inp">Home Page Featured Banner ($25)</p>
+                                        <div class="flex items-center rounded mt-2 overflow-hidden inpp">
+                                            <p class="bg-[#545D77] py-2 px-3">File</p>
+                                            <label for="upload-hero-banner" class="px-3 bg-[#545D7770] py-3 text-xs">Upload home page hero banner</label>
+                                            <input type="file" id="upload-hero-banner" class="hidden">
+                                        </div>
+                                    </div>
+                                    <div class="md:w-[25px] h-[25px] bg-[#545D7780] rounded chk show-inp">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <div>
+                                        <p class="show-inp">Category Page Top Listing ($25)</p>
+                                        <input type="text" class="bg-gray-700 mt-2 rounded w-full inpp"
+                                        id="">
+                                    </div>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk show-inp">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <div>
+                                        <p class="show-inp">Category Page Top 2 & 3 Listing ($25)</p>
+                                        <input type="text" class="bg-gray-700 mt-2 w-full rounded inpp"
+                                        id="">
+                                    </div>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk show-inp">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Home Page Hero Banner</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between lg:gap-24 flex-col md:flex-row gap-4 md:gap-4 md:flex-nowrap">
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Home Page Hero Banner</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="md:w-[50%] flex justify-between">
+                                    <p>Pool Tag</p>
+                                    <div class="w-[25px] h-[25px] bg-[#545D7780] rounded chk">
+                                        <span class="material-symbols-outlined">
+                                            check
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Submit Button -->
+                        <div class="mt-8">
+                            <button type="submit" class="app_listing-submit" id="app_listing-submit-btn">Submit
+                                Your App</button>
+                        </div>
+
+
+
                     </form>
+
+
                 </div>
 
             </main>
@@ -705,11 +907,63 @@
         function removeFAQ(button) {
             button.parentElement.remove();
         }
+
+        const chkBoxes = document.querySelectorAll(".chk");
+        const show_inp_chks = document.querySelectorAll(".show-inp");
+
+        chkBoxes.forEach(chkbox => {
+            // chkbox.addEventListener('click', function(){
+                chkbox.firstElementChild.style.display = "none";
+                
+            // });
+        });
+
+        chkBoxes.forEach(chkbox => {
+            chkbox.addEventListener('click', function(){
+                if(this.firstElementChild.style.display === "none"){
+                    this.firstElementChild.style.display = "inline"
+                }
+                else{
+                    this.firstElementChild.style.display = "none"
+                }
+                
+            });
+        });
+
+        show_inp_chks.forEach(btn => {
+            btn.parentElement.querySelector(".inpp").style.display = "none";
+        });
+
+        show_inp_chks.forEach(btn => {
+            btn.addEventListener('click', function(){
+                if(this.parentElement.querySelector(".inpp").style.display === "none"){
+                    this.parentElement.querySelector(".inpp").style.display = "flex";
+                }
+                else{
+                    this.parentElement.querySelector(".inpp").style.display = "none";
+                }
+            });
+        });
+
+
+        const paidPlanHeading = document.querySelector(".paid-plan-heading");  
+        const paidPlanContainer = document.querySelector(".paid-plan-container");  
+        paidPlanContainer.style.display = "none";
+
+        paidPlanHeading.addEventListener('click', function(){
+            if(paidPlanContainer.style.display === "none"){
+                paidPlanContainer.style.display = "flex";
+            }
+            else{
+                paidPlanContainer.style.display = "none";
+            }
+        });
+
     </script>
 
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></>
 
 
 
