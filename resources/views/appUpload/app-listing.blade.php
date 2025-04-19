@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    {{-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> --}}
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"><script/> --}}
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
 
 
     <script defer>
@@ -67,7 +71,6 @@
   
     <!-- Load Quill -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <style>
         .tabs {
@@ -119,6 +122,65 @@
         .paid-plan-container{
             display: flex;
         }
+        .btn-active{
+            border: 2px solid #7FFDFD;
+            background-color: #172835;
+        }
+        .quill-editor {
+            /* height: 150px; */
+        }
+
+        .ql-container {
+            border: none !important;
+            border-radius: 0 0 0.5rem 0.5rem; rounded corners
+            background-color: #545D7780; /* your desired background */
+            overflow: hidden; /* smooth rounded corners */
+            /* color: white; */
+        }
+
+        .ql-editor {
+            border: none !important;
+            /* border-radius: 0.5rem; */
+            min-height: 150px; /* optional: adjust editor height */
+            padding: 1rem;
+            color: white; /* text color */
+        }
+
+        /* Optional: Toolbar also rounded */
+        .ql-toolbar {
+            border: none !important;
+            border-radius: 0.5rem 0.5rem 0 0;
+            background-color: #444c65; /* optional dark toolbar */
+            color: white;
+        }
+
+        /* Make toolbar icons and text white */
+        .ql-toolbar.ql-snow {
+        color: white !important;
+        /* background-color: #545D7780; your desired background */
+        }
+
+        .ql-toolbar.ql-snow .ql-picker-label,
+        .ql-toolbar.ql-snow .ql-picker-item,
+        .ql-toolbar.ql-snow .ql-stroke,
+        .ql-toolbar.ql-snow .ql-fill,
+        .ql-toolbar.ql-snow .ql-picker-options,
+        .ql-toolbar.ql-snow svg {
+        color: white !important;
+        fill: white !important;
+        stroke: white !important;
+        }
+
+        /* Optional: make hover and active states white too */
+        .ql-toolbar.ql-snow .ql-picker-label:hover,
+        .ql-toolbar.ql-snow .ql-picker-item:hover,
+        .ql-toolbar.ql-snow button:hover {
+        color: white !important;
+        fill: white !important;
+        stroke: white !important;
+        }
+
+
     </style>
 
 </head>
@@ -372,7 +434,7 @@
                             </div>
 
                             <!-- Row 4 -->
-                            <div class="app_listing-field">
+                            {{-- <div class="app_listing-field">
                                 <label class="app_listing-label" for="app_listing-about">About Your App</label>
                                 <textarea class="app_listing-input" name="about_intro" id="app_listing-about" placeholder="Enter About your app"></textarea>
                             
@@ -386,6 +448,23 @@
                             <div class="app_listing-field">
                                 <label class="app_listing-label" for="app_listing-overview">Overview</label>
                                 <textarea class="app_listing-input" id="app_listing-overview" placeholder="Enter your phone number"></textarea>
+                            </div> --}}
+
+                            <div class="input-toggle-box-container app_listing-field w-full flex flex-col gap-2">
+                                <div class="flex gap-3 justify-stretch about-intro-btns">
+                                    <button type="button" name="about" class="border-2 py-1 border-[#7FFDFD] font-bold px-2 rounded-lg w-full text-white">About</button>
+                                    <button type="button" name="intro" class="bg-[#7FFDFD] py-1 font-bold px-2 rounded-lg w-full text-blue-950">Introduction</button>
+                                    <button type="button" name="overview" class="bg-[#7FFDFD] py-1 font-bold px-2 rounded-lg w-full text-blue-950">Overview</button>
+                                </div>
+                                <div class="editor-wrapper block text-white" data-editor="about">
+                                    <div id="about-editor" class="quill-editor text-white h-32 bg-[#545D7780] p-2">About Your App</div>
+                                  </div>
+                                  <div class="editor-wrapper hidden" data-editor="intro">
+                                    <div id="intro-editor" class="quill-editor h-32 bg-[#545D7780] p-2">Write a introduction for your app</div>
+                                  </div>
+                                  <div class="editor-wrapper hidden" data-editor="overview">
+                                    <div id="overview-editor" class="quill-editor h-32 bg-[#545D7780] p-2">Overview</div>
+                                  </div>
                             </div>
                 
 
@@ -430,10 +509,28 @@
 
                             {{-- FAQ --}}
 
-                            <div class="app_listing-field">
+                            {{-- <div class="app_listing-field">
                                 <label class="app_listing-label" for="app_listing-faq">FAQ</label>
                                 <textarea class="app_listing-input" id="app_listing-faq" placeholder="Enter the question"></textarea>
+                            </div> --}}
+
+
+                            <div class="myFaq flex flex-col items-start app_listing-field">
+                                <label class="app_listing-label" for="app_listing-faq">FAQ</label>
+
+                                <div class="faq-container-box">
+                                    {{-- <div class="flex mb-2 rounded-xl overflow-hidden">
+                                        <div class="w-full">
+                                            <input type="text" class="w-full px-2 py-2 bg-[#545D7780] border-b border-gray-600" placeholder="your Question">
+                                            <input type="text" class="w-full px-2 py-2 bg-[#545D7780] border-b border-gray-600" placeholder="your ans">
+                                        </div>
+                                        <button type="button" class="px-3 bg-gray-600 text-gray-200">Remove</button>
+                                    </div> --}}
+                                </div>
+
+                                <button type="button" class="faq-add-btn bg-[#7FFDFD] py-1 font-bold px-2 rounded-lg  text-blue-950">Add FAQ</button>
                             </div>
+
 
                             {{-- <div class="mb-3">
                                 <label class="app_listing-label" for="app_listing-faqs">FAQs</label>
@@ -577,6 +674,19 @@
                                 <label class="app_listing-label" for="app_listing-other-detail">Other Detail</label>
                                 <input type="text" class="app_listing-input" id="app_listing-other-detail"
                                     placeholder="Enter your email address">
+                            </div>
+
+                            <div class="app_listing-field">
+                                <label class="app_listing-label" for="app_listing-other-detail">Add Tags</label>
+                                <div class="flex">
+                                    <input type="text" class="tag-inp app_listing-input rounded-tr-none rounded-br-none" id="app_listing-other-detail"
+                                    placeholder="Enter tags">
+                                    <button type="button" class="px-2 bg-gray-600 rounded-tr-md rounded-br-md add-tag-btn">Add</button>
+                                </div>
+                                <div class="tags-container flex gap-2 mt-2 flex-wrap">
+                                    
+
+                                </div>
                             </div>
 
                             
@@ -840,73 +950,83 @@
             </div>
         </footer>
     </div>
+    
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-    <!-- Initialize Quill and Tabs -->
     <script>
-        // Initialize Quill editors
-        var aboutIntroEditor = new Quill('#about_intro_editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: true
-            }
-        });
-        var introductionEditor = new Quill('#introduction_editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: true
-            }
-        });
-        var overviewEditor = new Quill('#overview_editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: true
-            }
+
+        const addFaqBtn = document.querySelector(".faq-add-btn");
+        const faqContainer = document.querySelector(".faq-container-box");
+        let index = 0;
+
+        addFaqBtn.addEventListener('click', function(){
+            index++;
+            const faqHTML = `<div class="flex mb-2 rounded-lg overflow-hidden">
+                            <div class="w-full">
+                                <input type="text" class="w-full px-2 py-2 bg-[#545D7780] border-b border-gray-600" placeholder="Question ${index}">
+                                <input type="text" class="w-full px-2 py-2 bg-[#545D7780] border-b border-gray-600" placeholder="your answer">
+                            </div>
+                            <button type="button" onclick=removeFAQ(this) class="px-3 bg-gray-600 text-gray-200">Remove</button>
+                        </div> `;
+            faqContainer.insertAdjacentHTML('beforeend', faqHTML);
         });
 
-        // Tabs switch
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
+        const removeFAQ = (button) => {
+            button.parentElement.remove();
+        }
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tab = button.getAttribute('data-tab');
+        console.log(addFaqBtn);
+        
 
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
 
-                button.classList.add('active');
-                document.getElementById(tab).classList.add('active');
+        // 
+
+        const about_introBtns = document.querySelectorAll(".about-intro-btns button");
+        const editorWrappers = document.querySelectorAll(".editor-wrapper");
+
+        const editors = {
+            about: new Quill('#about-editor', { theme: 'snow' }),
+            intro: new Quill('#intro-editor', { theme: 'snow' }),
+            overview: new Quill('#overview-editor', { theme: 'snow' }),
+        };
+
+
+        // console.log(about_introBtns);
+        about_introBtns.forEach(button => {
+            button.addEventListener('click', function(){
+                about_introBtns.forEach(btn => {
+                    btn.classList.remove("border-2", "border-[#7FFDFD]", "py-1", "bg-[#545D7780]", "font-bold", "px-2", "rounded-lg", "w-full", "text-white")
+                    btn.classList.add("bg-[#7FFDFD]", "py-1", "font-bold", "px-2", "bg-[#545D7780]", "rounded-lg", "w-full", "text-blue-950")
+                });
+
+                this.classList.remove("bg-[#7FFDFD]", "py-1", "font-bold", "bg-[#545D7780]", "px-2", "rounded-lg", "w-full", "text-blue-950");
+                this.classList.add("border-2", "border-[#7FFDFD]", "py-1", "bg-[#545D7780]", "font-bold", "px-2", "rounded-lg", "w-full", "text-white");
+
+                const active = this.name;
+                editorWrappers.forEach(wrapper => {
+                if (wrapper.dataset.editor === active) {
+                    wrapper.classList.remove("hidden");
+                    wrapper.classList.add("block");
+                } else {
+                    wrapper.classList.remove("block");
+                    wrapper.classList.add("hidden");
+                }
+                });
+
+                console.log(textareas);
+                
             });
         });
 
-        // On form submit: copy editors data to hidden inputs
-        const form = document.querySelector('form');
-        form.onsubmit = function() {
-            document.querySelector('#about_intro').value = aboutIntroEditor.root.innerHTML;
-            document.querySelector('#introduction_input').value = introductionEditor.root.innerHTML;
-            document.querySelector('#overview_input').value = overviewEditor.root.innerHTML;
-        };
-    </script>
-
-
-    <script>
-        function addFAQ() {
-            let faqContainer = document.getElementById("faq-container");
-            let index = faqContainer.children.length + 1;
-            let faqHtml = `
-          <div class="faq-item mb-3 border p-3">
-              <label class="form-label">Question ${index}</label>
-              <input type="text" class="form-control" name="faq_question[]" placeholder="Enter Question">
-              <label class="form-label mt-2">Answer</label>
-              <textarea class="form-control" name="faq_answer[]" rows="2" placeholder="Enter Answer"></textarea>
-              <button type="button" class="btn btn-danger btn-sm mt-2" onclick="removeFAQ(this)">Remove</button>
-          </div>`;
-            faqContainer.insertAdjacentHTML('beforeend', faqHtml);
+        function getEditorContents() {
+            return {
+                about: editors.about.root.innerHTML,
+                intro: editors.intro.root.innerHTML,
+                overview: editors.overview.root.innerHTML
+            };
         }
 
-        function removeFAQ(button) {
-            button.parentElement.remove();
-        }
+
 
         const chkBoxes = document.querySelectorAll(".chk");
         const show_inp_chks = document.querySelectorAll(".show-inp");
@@ -917,6 +1037,7 @@
                 
             // });
         });
+
 
         chkBoxes.forEach(chkbox => {
             chkbox.addEventListener('click', function(){
@@ -945,6 +1066,34 @@
             });
         });
 
+        // add tags logic
+
+        const addTagBtn = document.querySelector(".add-tag-btn");
+        const tagInp = document.querySelector(".tag-inp");
+        const tagsContainer = document.querySelector(".tags-container");
+
+        
+        
+        addTagBtn.addEventListener('click', function(){
+            const tagHTML = `<p class="text-xs bg-zinc-400 px-2 py-[2px] rounded text-black flex items-center cursor-pointer">
+                            <span>${tagInp.value}</span>
+                            <span class="material-symbols-outlined text-xs" onclick=removeTag(this)>
+                                close
+                            </span>
+                        </p>`;
+            if(tagInp.value !== ""){
+                tagsContainer.insertAdjacentHTML('beforeend', tagHTML);
+                tagInp.value = "";
+            }
+        });
+
+        const removeTag = (button) => {
+            button.parentElement.remove();
+        }
+        
+
+
+
 
         const paidPlanHeading = document.querySelector(".paid-plan-heading");  
         const paidPlanContainer = document.querySelector(".paid-plan-container");  
@@ -963,10 +1112,11 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></>
+    {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js">< script/> --}}
 
-
-
+        
 </body>
 
+
 </html>
+
