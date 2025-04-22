@@ -50,6 +50,10 @@ Route::get('/launchpad', function () {
     return view('appUpload.appUpload');
 })->name('launchpad');
 
+Route::get('/create-blog', function () {
+    return view('Blogs.createBlog');
+})->name('createBlog');
+
 
 
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
