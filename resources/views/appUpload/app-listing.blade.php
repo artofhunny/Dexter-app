@@ -15,8 +15,10 @@
     {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"><script/> --}}
 
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check" />
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check" /> --}}
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/material-symbols@0.31.2/outlined.css" rel="stylesheet">
+
 
 
     <script defer>
@@ -893,6 +895,27 @@
                             </div>
                         </div>
 
+                        <h1 class="app_listing_heading">
+                            Cart
+                        </h1>
+
+                        <div class="px-4 py-6 bg-[#222C34] flex flex-col gap-4">
+                            <div class="flex justify-between">
+                                <h4 class="text-[25px] font-bold text-[#7FFDFD]">Service</h4>
+                                <p class="text-[25px] font-bold ">Price</p>
+                            </div>
+                            <div class="flex flex-col gap-6 new-cart-item-container">
+                                {{-- <div class="flex justify-between font-medium">
+                                    <p class="text-[20px]">Home Page Featured Listing ($25)</p>
+                                    <p class="text-[20px]">$25</p>
+                                </div> --}}
+                            </div>
+                            <div class="flex justify-between">
+                                <h4 class="text-[25px] font-bold text-[#AC93FF]">Total</h4>
+                                <p class="text-[25px] font-bold">$<span class="new-cart-total">0</span></p>
+                            </div>
+                        </div>
+
                         <!-- Submit Button -->
                         <div class="mt-8">
                             <button type="submit" class="app_listing-submit" id="app_listing-submit-btn">Submit
@@ -1051,10 +1074,10 @@
         const chkBoxes = document.querySelectorAll(".chk");
         const show_inp_chks = document.querySelectorAll(".show-inp");
 
-        chkBoxes.forEach(chkbox => {
+        chkBoxes.forEach((chkbox, index) => {
             // chkbox.addEventListener('click', function(){
                 chkbox.firstElementChild.style.display = "none";
-                
+                chkbox.setAttribute("name", `item-${index}`);
             // });
         });
 
@@ -1062,6 +1085,7 @@
 
         const showCartBtn = document.querySelector(".show-cart-btn");
         const cartContainer = document.querySelector(".cart-detail");
+        const cartTotalDisplay = document.querySelector(".new-cart-total");
 
         console.log(showCartBtn);
         console.log(cartContainer);
@@ -1081,7 +1105,7 @@
             document.querySelector("")
         }
 
-        chkBoxes.forEach(chkbox => {
+        chkBoxes.forEach((chkbox, index) => {
             
 
             chkbox.addEventListener('click', function(){
@@ -1092,6 +1116,18 @@
                     cartTotal += itemPrice;
                     document.querySelector(".cart-total-price").innerText = cartTotal;
 
+                    const itemDetail = this.parentElement.querySelector("p").innerText;
+                    const newCartItemContainer = document.querySelector(".new-cart-item-container");
+
+                    const cartItemHTML = `<div class="flex justify-between font-medium" name="${this.getAttribute("name")}">
+                                    <p class="text-[14px] md:text-[20px]">${itemDetail}</p>
+                                    <p class="text-[14px] md:text-[20px]">$${itemPrice}</p>
+                                </div>`;
+                    
+                    newCartItemContainer.insertAdjacentHTML('afterbegin', cartItemHTML);
+                    cartTotalDisplay.innerText = cartTotal;
+                    
+                    
                     this.parentElement.querySelector(".effect-tag").classList.add("effect-on-ckeck");
                     setTimeout(() => {
                         this.parentElement.querySelector(".effect-tag").classList.remove("effect-on-ckeck");
@@ -1103,6 +1139,21 @@
                     itemPrice = Number.parseInt(itemPrice);
                     cartTotal -= itemPrice;
                     document.querySelector(".cart-total-price").innerText = cartTotal;
+                    cartTotalDisplay.innerText = cartTotal;
+
+                    const newCartItemContainer = document.querySelector(".new-cart-item-container");
+
+                    Array.from(newCartItemContainer.children).forEach(cartItem => {
+                        if(cartItem.getAttribute("name") === this.getAttribute("name")){
+                            newCartItemContainer.removeChild(cartItem);
+                        }
+
+                        console.log(cartItem);
+                        
+                    })
+                    // newCartItemContainer.removeChild(newCartItemContainer.firstElementChild);
+                    console.log(newCartItemContainer.children);
+                    
                 }
                 
             });
